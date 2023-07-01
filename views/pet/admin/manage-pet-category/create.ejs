@@ -6,9 +6,12 @@
         <h5 class="card-title">
           <% if (data.mode === 'create') { %> New Pet Category <% } %>
         </h5>
+        <!-- error -->
         <% if (data.error){ %>
         <div class="alert alert-danger" role="alert"><%= data.error %></div>
-        <%- JSON.stringify(data.errors) %> <% } %> <% if (data.success){ %>
+        <% } %>
+        <!-- success -->
+        <% if (data.success){ %>
         <div class="alert alert-success" role="alert"><%= data.success %></div>
         <% } %>
         <div class="mb-3">
