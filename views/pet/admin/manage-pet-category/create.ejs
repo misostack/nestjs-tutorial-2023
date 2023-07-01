@@ -8,7 +8,9 @@
         </h5>
         <% if (data.error){ %>
         <div class="alert alert-danger" role="alert"><%= data.error %></div>
-        <%- JSON.stringify(data.errors) %> <% } %>
+        <%- JSON.stringify(data.errors) %> <% } %> <% if (data.success){ %>
+        <div class="alert alert-success" role="alert"><%= data.success %></div>
+        <% } %>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <div class="input-group has-validation">
@@ -28,9 +30,11 @@
           </div>
         </div>
       </div>
+      <% if(!data.success) { %>
       <div class="mb-3 col-12 text-center">
         <button type="submit" class="btn btn-primary">Save</button>
       </div>
+      <% } %>
     </div>
   </form>
 </section>

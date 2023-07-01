@@ -57,6 +57,11 @@ export class ManagePetCategoryController {
     }
     // set value and show success message
     Reflect.set(data, 'values', object);
+    Reflect.set(
+      data,
+      'success',
+      `Pet Category : ${object.title} has been created!`,
+    );
     // success
     return { data };
   }
