@@ -1,0 +1,49 @@
+<%- include('layouts/admin/header'); %>
+<section class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">List Pet Categories</h5>
+      <div class="pb-4">
+        <a
+          class="btn btn-primary"
+          href="/admin/pet-categories/create"
+          role="button"
+          >New Pet Category</a
+        >
+      </div>
+      <div class="table-responsive">
+        <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 360px">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% petCategories.forEach(petCategory => { %>
+            <tr class="">
+              <td><%= petCategory.id %></td>
+              <td><%= petCategory.name %></td>
+              <td>
+                <a
+                  href="/admin/pet-categories/<%= petCategory.id %>"
+                  title="Edit"
+                  >Edit</a
+                >
+                <form
+                  action="/admin/pet-categories/delete/<%= petCategory.id %>"
+                  method="post"
+                >
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include('layouts/admin/footer'); %>

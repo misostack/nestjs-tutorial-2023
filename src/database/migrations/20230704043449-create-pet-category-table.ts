@@ -22,6 +22,14 @@ module.exports = {
         type: Sequelize.STRING(60),
         allowNull: false,
       },
+      createdAt: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
+      },
     });
   },
 

@@ -19,6 +19,7 @@ import models from './pet/models';
       uri: 'mysql://root:123456@localhost/nestjs_tutorial_2023',
       dialect: 'mysql',
       models: models,
+      logging: console.log,
     }),
   ],
   providers: [],
