@@ -1,0 +1,50 @@
+<%- include('layouts/admin/header'); %>
+<section class="col-6">
+  <form method="post" enctype="multipart/form-data">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <% if (data.mode === 'create') { %> New Pet Category <% } %> <% if
+          (data.mode === 'edit') { %> Edit Pet Category <% } %>
+        </h5>
+        <!-- error -->
+        <% if (data.error){ %>
+        <div class="alert alert-danger" role="alert"><%= data.error %></div>
+        <% } %>
+        <!-- success -->
+        <% if (data.success){ %>
+        <div class="alert alert-success" role="alert"><%= data.success %></div>
+        <script type="text/javascript">
+          setTimeout(() => {
+            window.location.href = '/admin/pet-categories/';
+          }, 2000);
+        </script>
+        <% } %>
+        <div class="mb-3">
+          <label for="title" class="form-label">Name</label>
+          <div class="input-group has-validation">
+            <input
+              type="text"
+              class="form-control <%= data.errors && data.errors['name'] ? 'is-invalid': '' %>"
+              id="name"
+              name="name"
+              value="<%= data.values && data.values['name'] %>"
+              placeholder="Pet Category name"
+            />
+            <% if (data.errors && data.errors['name']) { %>
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+              <%= data.errors['name'] %>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% if(!data.success) { %>
+      <div class="mb-3 col-12 text-center">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+      <% } %>
+    </div>
+  </form>
+</section>
+<%- include('layouts/admin/footer'); %>
