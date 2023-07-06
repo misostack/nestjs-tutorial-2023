@@ -1,7 +1,9 @@
 const path = require('path');
 
+const database_dist = process.env.NODE_ENV === 'production' ? 'dist' : 'src';
+
 module.exports = {
-  config: path.resolve('./dist/database/config/config.js'),
-  'seeders-path': path.resolve('./dist/database/seeders'),
-  'migrations-path': path.resolve('./dist/database/migrations'),
+  config: path.resolve(`./${database_dist}/database/config/config.js`),
+  'seeders-path': path.resolve(`./${database_dist}/database/seeders`),
+  'migrations-path': path.resolve(`./${database_dist}/database/migrations`),
 };

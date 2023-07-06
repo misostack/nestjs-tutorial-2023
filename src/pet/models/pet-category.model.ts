@@ -1,7 +1,9 @@
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
+export const PetCategoryTableName = 'pet_categories';
+
 @Table({
-  tableName: 'pet_categories',
+  tableName: PetCategoryTableName,
 })
 export class PetCategory extends Model {
   @Column({

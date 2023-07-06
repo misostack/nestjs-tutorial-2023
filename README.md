@@ -53,5 +53,15 @@ npx sequelize-cli migration:create --name create-pet-category-table --migrations
 # build
 npm run build
 # run migration
-npx sequelize-cli db:migrate --env production
+NODE_ENV=production npx sequelize-cli db:migrate --env production
+# create seeds
+npx sequelize-cli seed:generate --name pet-category
+# run seeds
+NODE_ENV=production npx sequelize-cli db:seed:all
+```
+
+> [defaultValue: Sequelize.UUIDV4 is not setting a default value on column in postgres](https://github.com/sequelize/sequelize/issues/13224)
+
+```sh
+npm i uuid --save
 ```
