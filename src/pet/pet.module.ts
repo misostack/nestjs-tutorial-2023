@@ -6,6 +6,7 @@ import { ManagePetController } from './controllers/admin/manage-pet.controller';
 import { ManagePetCategoryController } from './controllers/admin/manage-pet-category.controller';
 import { ManagePetAttributeController } from './controllers/admin/manage-pet-attribute.controller';
 import { NestjsFormDataModule } from 'nestjs-form-data';
+import { PetCategoryRepository } from './repositories/pet-category.repository';
 @Module({
   imports: [NestjsFormDataModule],
   controllers: [
@@ -14,5 +15,6 @@ import { NestjsFormDataModule } from 'nestjs-form-data';
     ManagePetCategoryController,
     ManagePetAttributeController,
   ],
+  providers: [PetCategoryRepository],
 })
 export class PetModule {}

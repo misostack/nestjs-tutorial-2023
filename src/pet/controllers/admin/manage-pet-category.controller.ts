@@ -14,6 +14,7 @@ import { validate, ValidationError } from 'class-validator';
 import { FormDataRequest } from 'nestjs-form-data';
 import { PetCategory } from 'src/pet/models/pet-category.model';
 import { Response } from 'express';
+import { PetCategoryRepository } from 'src/pet/repositories/pet-category.repository';
 
 const transformError = (error: ValidationError) => {
   const { property, constraints } = error;
@@ -24,10 +25,11 @@ const transformError = (error: ValidationError) => {
 };
 @Controller('admin/pet-categories')
 export class ManagePetCategoryController {
+  constructor(private petCategoryRepository: PetCategoryRepository) {}
   @Get('')
   @Render('pet/admin/manage-pet-category/list')
   async getList() {
-    const petCategories = await PetCategory.findAll();
+    const petCategories = await this.petCategoryRepository.findAll();
     return {
       petCategories,
     };
