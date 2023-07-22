@@ -1,3 +1,4 @@
+import { PetCategoryInjectionKey } from './../../providers/pet-category.provider';
 import {
   Body,
   Controller,
@@ -7,6 +8,7 @@ import {
   Post,
   Redirect,
   Render,
+  Inject,
 } from '@nestjs/common';
 import { CreatePetCategoryDto } from 'src/pet/dtos/pet-dto';
 import { plainToInstance } from 'class-transformer';
@@ -25,11 +27,16 @@ const transformError = (error: ValidationError) => {
 };
 @Controller('admin/pet-categories')
 export class ManagePetCategoryController {
-  constructor(private petCategoryRepository: PetCategoryRepository) {}
+  constructor(
+    private petCategoryRepository: PetCategoryRepository,
+    @Inject(PetCategoryInjectionKey)
+    private defaultPetCategoryRepository: typeof PetCategory,
+  ) {}
   @Get('')
   @Render('pet/admin/manage-pet-category/list')
   async getList() {
-    const petCategories = await this.petCategoryRepository.findAll();
+    // const petCategories = await this.petCategoryRepository.findAll();
+    const petCategories = await this.defaultPetCategoryRepository.findAll();
     return {
       petCategories,
     };
