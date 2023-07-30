@@ -19,7 +19,7 @@ export class Example extends Model {
   @Column({
     primaryKey: true,
     autoIncrement: true,
-    type: DataType.INTEGER, // INTEGER
+    type: DataType.INTEGER.UNSIGNED, // INTEGER
   })
   id?: number;
 
@@ -129,4 +129,11 @@ export class Example extends Model {
     values: ['active', 'inactive', 'pending'],
   })
   status: string;
+
+  @Column({
+    type: DataType.JSON,
+    allowNull: true,
+    defaultValue: {},
+  })
+  settings: Object;
 }
