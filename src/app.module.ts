@@ -5,6 +5,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { PetModule } from './pet/pet.module';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { UserModule } from './user/user.module';
 import models from './pet/models';
 
 @Module({
@@ -21,6 +22,7 @@ import models from './pet/models';
       models: models,
       logging: console.log,
     }),
+    UserModule,
   ],
   providers: [],
 })
